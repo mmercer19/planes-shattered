@@ -1,41 +1,102 @@
-var cookies = 0;
+//
+// by Matt Mercer
+//
 
-function cookieClick(number){
-    cookies = cookies + number;
-	document.getElementById("cookies").innerHTML = cookies;
-};
 
-var cursors = 0;
-
-function buyCursor(){
-    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
-    if(cookies >= cursorCost){                                   //checks that the player can afford the cursor
-        cursors = cursors + 1;                                   //increases number of cursors
-    	cookies = cookies - cursorCost;                          //removes the cookies spent
-        document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('cookies').innerHTML = cookies;  //updates the number of cookies for the user
-    };
-    var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
-    document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
-};
-
-window.setInterval(function(){
-	
-	cookieClick(cursors);
-	//console.log(cookies);
-}, 1000);
-
-var save = {
-    cookies: cookies,
-    cursors: cursors,
-    prestige: prestige
+var parshmen = {
+  name:parshmen,
+  unemployed:0,
+  increment:1,
+  capincrement:0,
+  cap:100,
+  power:1,
+  assigned:0,
+  counter:1000
 }
-localStorage.setItem("save",JSON.stringify(save));
-var savegame = JSON.parse(localStorage.getItem("save"));
-if (typeof savegame.cookies !== "undefined") cookies = savegame.cookies;
+var userInput;
+function setInputNumber() {
+    var userInput = document.getElementById("userInput").value;
+    document.getElementById("demo").innerHTML = userInput; //test input function
+    x = userInput; 
+}
+setInputNumber();
+console.log(userInput); 
 
-function prettify(input){
-    var output = Math.round(input * 1000000)/1000000;
-	return output;
+
+
+var dparshmenAllocated = 0;
+var gparshmenAllocated = 0;
+var rparshmenAllocated = 0;
+var sparshmenAllocated = 0;
+var eparshmenAllocated = 0;
+
+function assignParshman(number){
+  var dparshmenAllocated = 0;
+  console.log(dparshmenAllocated);
+  userInput = document.getElementById("demo").innerHTML;
+  if (parshmen.unemployed + parshmen.assigned < parshmen.cap + 1){
+    parshmen.assigned = dparshmenAllocated + userInput;
+    parshmen.unemployed = parshmen.unemployed - userInput;
+    dparshmenAllocated = dparshmenAllocated + userInput;
+    document.getElementById("dparshmenAllocated").innerHTML = dparshmenAllocated;
+		document.getElementById('parshmanCount').innerHTML = parshmen.unemployed;
+  }
+}
+
+var parshemnIncrement = setInterval(parshmenCount, parshmen.counter);
+
+function parshmenCount () {
+  if (parshmen.unemployed + parshmen.assigned < parshmen.cap){
+  parshmen.unemployed = parshmen.unemployed + 1;
+  parshmen.capincrement = parshmen.capincrement + 1;
+  document.getElementById('parshmanCount').innerHTML = parshmen.unemployed;
+  document.getElementById('parshmanCap').innerHTML = parshmen.capincrement;
+  }
+}
+ 
+var diamondChip = 0; 
+var diamondMark = 0;
+var diamondBroam = 0;
+var counter = 1000;
+var diamonds = setInterval(diamondMine, counter);
+
+function diamondMine() {
+    var c = Math.floor(Math.random().toFixed(2) * 100);
+      if (c < 80){
+    diamondChip = diamondChip + 1;
+      document.getElementById('dchip').innerHTML = diamondChip.toLocaleString('en-US');        
+        }   
+  else if (c < 95){	
+    	diamondMark = diamondMark + 1;
+      document.getElementById('dmark').innerHTML = diamondMark.toLocaleString('en-US');
+  	}
+  else if (c < 99){	
+    	diamondBroam = diamondBroam + 1;
+      document.getElementById('dbroam').innerHTML = diamondBroam.toLocaleString('en-US');
+      
+  	}
+}
+
+var garnetChip = 0; 
+var garnetMark = 0;
+var garnetBroam = 0;
+var counter = 1000;
+var garnets = setInterval(garnetMine, counter);
+
+function garnetMine() {
+    var c = Math.floor(Math.random().toFixed(2) * 100);
+      if (c < 80){
+    garnetChip = garnetChip + 1;
+      document.getElementById('gchip').innerHTML = garnetChip.toLocaleString('en-US');        
+        }   
+  else if (c < 95){	
+    	garnetMark = garnetMark + 1;
+      document.getElementById('gmark').innerHTML = garnetMark.toLocaleString('en-US');
+  	}
+  else if (c < 99){	
+    	garnetBroam = garnetBroam + 1;
+      document.getElementById('gbroam').innerHTML = garnetBroam.toLocaleString('en-US');
+      
+  	}
 }
 

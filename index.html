@@ -1,16 +1,100 @@
 <html>
-    <head>
-<link rel="stylesheet" type="text/css" href="interface.css" />
-    </head>
-    <body>
-        <button onClick="cookieClick(1)">Click Me!</button>
-        
-        GemHearts: <span id="cookies">0</span>
-        <br />
-        <button onClick="buyCursor()">Build Party</button>
-        Parties: <span id="cursors">0</span>
-        <br />
-        Party Cost: <span id="cursorCost">10</span>
-        <script type="text/javascript" src="main.js"></script>
-    </body>
+<head>
+    <title>Shattered Planes</title>
+    <link rel="stylesheet" type="text/css" href="interface.css" />
+</head>
+<body>
+    <h1></h1>
+
+<h2>Shattered Planes</h2>
+
+
+<span><input placeholder="0" type="number" id="userInput" style="width:20%"></span>
+<button onmousedown="setInputNumber()">Set</button> <p id="demo"></p>
+    
+        <table border="1" style="width:30%" align="left">
+            <tr>
+              <td>Parshman: <span id="parshmanCount" min="0">0</span></br></td>
+            </tr>
+            <tr>
+              <td>Parshman Cap: <span id="parshmanCap">0</span></br></td>
+            </tr>
+            <tr>
+              <td>Parshman Power: <span id="parshmanPower">1</span><br></td>
+            </tr>  
+            <br />
+        </table>
+        <table border="1" style="width:15%">
+          <tr>
+            <th></th>
+          </tr>
+        </table>
+        <table border="1" style="width:53%" align="right">
+          <tr>
+            <td>
+          
+          </td>
+          </tr>
+            <tr>
+              <th style="width:10%" align="left">Mine</th>
+              <th style="width:15%" align="center">Chip</th>
+              <th style="width:15%" align="center">Mark</th> 
+              <th style="width:15%" align="center">Broam</th>
+              <th style="width:42%">Parshmen Allocated</th>
+              <th style="width:10%" align="right"></th>
+              <th style="width:10%" align="right"></th>
+              <th style="width:18%" align="right"></th>
+            </tr>
+            <tr>
+              <td>Diamond</td>
+              <td align="center"><span id="dchip">0</span></td>
+              <td align="center"><span id="dmark">0</span></td>
+              <td align="center"><span id="dbroam">0</span></td>
+              <td align="center"><span id="dparshmenAllocated">0</span></td>
+              <td align="right"><button onClick="assignParshman(1)" id=>+</button></td>
+              <td align="right"><button onClick="dremoveParshman(1)">-</button></td>
+              <td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>
+              </tr>
+            <tr>
+              <td>Garnet</td>
+              <td align="center"><span id="gchip">0</span></td>
+              <td align="center"><span id="gmark">0</span></td>
+              <td align="center"><span id="gbroam">0</span></td></td>
+              <td align="center"><span id="garnetParshmenAllocated">0</span></td>
+              <td align="right"><button onmousedown="dassignParshman();">+</button></td>
+              <td align="right"><button onClick="gremoveParshman(1)">-</button></td>
+              <td align="right"><button onClick="gassignAllParshman(1)">Cap</button></td>            </tr>
+            <tr>
+              <td>Ruby</td>
+              <td align="center"><span id="rchip">0</span></td>
+              <td align="center"><span id="rmark">0</span></td>
+              <td align="center"><span id="rbroam">0</span></td></td>
+              <td align="center"><span id="rubyParshmenAllocated">0</span></td>
+              <td align="right"><button onClick="rassignParshman(1)">+</button></td>
+              <td align="right"><button onClick="rremoveParshman(1)">-</button></td>
+              <td align="right"><button onClick="rassignAllParshman(1)">Cap</button></td>
+            </tr>
+              <tr>
+              <td>Sapphire</td>
+              <td align="center"><span id="schip">0</span></td>
+              <td align="center"><span id="smark">0</span></td>
+              <td align="center"><span id="sbroam">0</span></td></td>
+              <td align="center"><span id="sapphireParshmenAllocated">0</span></td>
+              <td align="right"><button onClick="sassignParshman(1)">+</button></td>
+              <td align="right"><button onClick="sremoveParshman(1)">-</button></td>
+              <td align="right"><button onClick="sassignAllParshman(1)">Cap</button></td>
+            </tr>
+              <tr>
+              <td>Emerald</td>
+              <td align="center"><span id="echip">0</span></td>
+              <td align="center"><span id="emark">0</span></td>
+              <td align="center"><span id="ebroam">0</span></td></td>
+              <td align="center"><span id="emeraldParshmenAllocated">0</span></td>
+              <td align="right"><button onClick="eassignParshman(1)">+</button></td>
+              <td align="right"><button onClick="eremoveParshman(1)">-</button></td>
+              <td align="right"><button onClick="eassignAllParshman(1)">Cap</button></td>    
+            </tr>
+          </table>
+          <script src="main.js"></script>
+            </body>
 </html>
