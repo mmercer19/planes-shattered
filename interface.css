@@ -1,5 +1,5 @@
-body {
-    display: block;
-    margin: 8px;
-    border: 8px;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
