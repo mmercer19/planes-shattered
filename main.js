@@ -13,16 +13,12 @@ var parshmen = {
   assigned:0,
   counter:1000
 }
-var userInput;
+
 function setInputNumber() {
     var userInput = document.getElementById("userInput").value;
-    document.getElementById("demo").innerHTML = userInput; //test input function
-    x = userInput; 
+    var userInputInteger = parseInt(userInput); // converts input string to integer
+    assignParshman(userInputInteger);  // pass in the input as the first param to assignParshman
 }
-setInputNumber();
-console.log(userInput); 
-
-
 
 var dparshmenAllocated = 0;
 var gparshmenAllocated = 0;
@@ -31,13 +27,10 @@ var sparshmenAllocated = 0;
 var eparshmenAllocated = 0;
 
 function assignParshman(number){
-  var dparshmenAllocated = 0;
-  console.log(dparshmenAllocated);
-  userInput = document.getElementById("demo").innerHTML;
   if (parshmen.unemployed + parshmen.assigned < parshmen.cap + 1){
-    parshmen.assigned = dparshmenAllocated + userInput;
-    parshmen.unemployed = parshmen.unemployed - userInput;
-    dparshmenAllocated = dparshmenAllocated + userInput;
+    parshmen.assigned = dparshmenAllocated + number;
+    parshmen.unemployed = parshmen.unemployed - number;
+    dparshmenAllocated = dparshmenAllocated + number;
     document.getElementById("dparshmenAllocated").innerHTML = dparshmenAllocated;
 		document.getElementById('parshmanCount').innerHTML = parshmen.unemployed;
   }
