@@ -4,7 +4,12 @@
     <link rel="stylesheet" type="text/css" href="interface.css" />
 </head>
 <body>
-    <h1></h1>
+  <div id="header">
+    <h2>The Highprince of House <span id="houseName">Ivadac</span></h2>
+    <div id="ruler">Ruled by the Brightlord <span id="rulerName">Xbastion </span> <span id="houseName">Housename</span></div> <!-- why does this second use of houseName not populate???-->
+    <div style="clear:both;"></div>
+  </div>
+  
 
 <h2>Shattered Planes</h2>
 
@@ -12,9 +17,9 @@
 <span><input placeholder="0" type="number" id="userInput" style="width:100"></span>
 <button onmousedown="setInputNumber()">Set</button> <p id="demo"></p>
 
-<table border="1" style="width:10%" align="left">
+<table border="1" style="width:13%" align="left">
     <tr style="height:40">
-        <td>Parshman: <span id="parshmanCount" min="0">0</span></br></td>
+        <td>Parshman Unemployed: <span id="parshmanUnemployed" min="0">0</span></br></td>
       </tr>
       <tr style="height:40">
         <td id="parshmen-cap-bar">Parshman Cap: <span id="parshmanCap">0</span></br></td>
@@ -23,12 +28,18 @@
         <td>Parshman Power: <span id="parshmanPower">1</span><br></td>
       </tr>  
       <tr style="height:40">
+        <td>Parshmen employed: <span id="parshmanEmployed">0</span><br></td>
+      </tr>  
+      <tr style="height:40">
+        <td>Parshmen Total: <span id="parshmanCurrent">0</span><br></td>
+      </tr>
+      <tr style="height:40">
         <td>Wealth: <span id="dcWealth">0</span><br></td>
-      </tr>      
+      </tr>
 </table>
 <table border="1" style="width:10%" align="left">
       <tr>
-        <th>Mine</th>
+        <th>House</th>
       </tr>
       <tr>
         <th>Warcamp</th>
@@ -45,7 +56,7 @@
       <tr>
         <th>Scouting Tower</th></tr>
       <tr>
-        <th>HeadQuarters</th>
+        <th>The Pinacle</th>
       </tr>
       <tr>
         <th>Settings</th>
@@ -55,8 +66,8 @@
       </tr>       
 </table>
 <table border="1" style="width:42%" align="right">
-    <tr colspan="8" style="width:100%" align="center">
-        <center><b>Mine</b></center>
+    <tr style="width:100%" align="center">
+        <th colspan="8">Mine</th>
     </tr>
     <tr>
         <th style="width:15%" align="center"></th>
@@ -65,56 +76,131 @@
         <th style="width:15%" align="center">Broam</th>
         <th style="width:40%">Parshmen Allocated</th>
         <th colspan="3" style="width:1%" align="right"></th>
-      </tr>
+    </tr>
       <tr>
         <td>Diamond</td>
         <td align="center"><span id="dchip">0</span></td>
         <td align="center"><span id="dmark">0</span></td>
         <td align="center"><span id="dbroam">0</span></td>
         <td align="center"><span id="dparshmenAllocated">0</span></td>
-        <td align="right"><button onClick="dassignParshman(1)" id=>+</button></td>
-        <td align="right"><button onClick="dassignParshman(-1)">-</button></td>
-        <td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>
-        </tr>
+        <td align="right"><button onClick="dassignParshman(10)">+</button></td>
+        <td align="right"><button onClick="dassignParshman(-10)">-</button></td>
+        <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+      </tr>
       <tr>
         <td>Garnet</td>
         <td align="center"><span id="gchip">0</span></td>
         <td align="center"><span id="gmark">0</span></td>
         <td align="center"><span id="gbroam">0</span></td></td>
-        <td align="center"><span id="gParshmenAllocated">0</span></td>
-        <td align="right"><button onClick="gassignParshman(1);">+</button></td>
-        <td align="right"><button onClick="gremoveParshman(-1)">-</button></td>
-        <td align="right"><button onClick="gassignAllParshman(1)">Cap</button></td>            </tr>
+        <td align="center"><span id="gparshmenAllocated">0</span></td>
+        <td align="right"><button id="gmine" onClick="gassignParshman(10);">+</button></td>
+        <td align="right"><button id="gmine1" onClick="gassignParshman(-10)">-</button></td>
+        <!--<td align="right"><button onClick="gassignAllParshman(1)">Cap</button></td>-->
+        </tr>
       <tr>
         <td>Ruby</td>
         <td align="center"><span id="rchip">0</span></td>
         <td align="center"><span id="rmark">0</span></td>
         <td align="center"><span id="rbroam">0</span></td></td>
-        <td align="center"><span id="rParshmenAllocated">0</span></td>
-        <td align="right"><button onClick="rassignParshman(1)">+</button></td>
-        <td align="right"><button onClick="rremoveParshman(-1)">-</button></td>
-        <td align="right"><button onClick="rassignAllParshman(1)">Cap</button></td>
+        <td align="center"><span id="rparshmenAllocated">0</span></td>
+        <td align="right"><button id="rmine" onClick="rassignParshman(10)">+</button></td>
+        <td align="right"><button id="rmine1" onClick="rassignParshman(-10)">-</button></td>
+        <!--<td align="right"><button onClick="rassignAllParshman(1)">Cap</button></td>-->
       </tr>
         <tr>
         <td>Sapphire</td>
         <td align="center"><span id="schip">0</span></td>
         <td align="center"><span id="smark">0</span></td>
         <td align="center"><span id="sbroam">0</span></td></td>
-        <td align="center"><span id="sParshmenAllocated">0</span></td>
-        <td align="right"><button onClick="sassignParshman(1)">+</button></td>
-        <td align="right"><button onClick="sremoveParshman(-1)">-</button></td>
-        <td align="right"><button onClick="sassignAllParshman(1)">Cap</button></td>
+        <td align="center"><span id="sparshmenAllocated">0</span></td>
+        <td align="right"><button id="smine" onClick="sassignParshman(10)">+</button></td>
+        <td align="right"><button id="smine1" onClick="sassignParshman(-10)">-</button></td>
+        <!--<td align="right"><button onClick="sassignAllParshman(1)">Cap</button></td>-->
       </tr>
         <tr>
         <td>Emerald</td>
         <td align="center"><span id="echip">0</span></td>
         <td align="center"><span id="emark">0</span></td>
         <td align="center"><span id="ebroam">0</span></td></td>
-        <td align="center"><span id="eParshmenAllocated">0</span></td>
-        <td align="right"><button onClick="eassignParshman(1)">+</button></td>
-        <td align="right"><button onClick="eremoveParshman(-1)">-</button></td>
-        <td align="right"><button onClick="eassignAllParshman(1)">Cap</button></td>    
+        <td align="center"><span id="eparshmenAllocated">0</span></td>
+        <td align="right"><button id="emine" onClick="eassignParshman(10)">+</button></td>
+        <td align="right"><button id="emine1" onClick="eassignParshman(-10)">-</button></td>
+        <!--<td align="right"><button onClick="eassignAllParshman(1)">Cap</button></td>-->    
       </tr>
+      <tr style="width:100%" border="0" align="center">
+        <th colspan="8">Resources</th>
+      </tr>
+      <tr>
+        <th style="width:15%" align="center"></th>
+        <th style="width:15%" align="center"></th>
+        <th style="width:15%" align="center"></th> 
+        <th style="width:15%" align="center"></th>
+        <th style="width:40%">Workers Allocated</th>
+        <th colspan="3" style="width:1%" align="right"></th>
+      </tr>
+    <tr>
+      <td>Food</td>
+      <td align="center"><span id="food">0</span></td>
+      <td align="center">Farms: <span id="">0</span></td>
+      <td align="center"><span id="">0</span>/sec</td>
+      <td align="center"><span id="farmerAllocated">0</span></td>
+      <td align="right"><button onClick="assignWorker(1)">+</button></td>
+      <td align="right"><button onClick="assignWorker(-1)">-</button></td>
+      <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+    </tr>
+    <tr>
+      <td>Wood</td>
+      <td align="center"><span id="wood">0</span></td>
+      <td align="center">Forests: <span id="">0</span></td>
+      <td align="center"><span id="">0</span>/sec</td>
+      <td align="center"><span id="carpenterAllocated">0</span></td>
+      <td align="right"><button onClick="assignWorker(1)">+</button></td>
+      <td align="right"><button onClick="assignWorker(-1)">-</button></td>
+      <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+    </tr>
+    <tr>
+      <td>Stone</td>
+      <td align="center"><span id="stone">0</span></td>
+      <td align="center">Quary: <span id="">0</span></td>
+      <td align="center"><span id="">0</span>/sec</td>
+      <td align="center"><span id="quaryworkerAllocated">0</span></td>
+      <td align="right"><button onClick="assignWorker(1)">+</button></td>
+      <td align="right"><button onClick="assignWorker(-1)">-</button></td>
+      <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+    </tr>
+    <tr style="width:100%" border="0" align="center">
+      <th colspan="8">Buildings</th>
+    </tr>
+    <tr>
+      <td>Blacksmiths</td>
+      <td align="center"><span id="sword">0</span></td>
+      <td align="center"><span id=""></span></td>
+      <td align="center"><span id=""></span></td>
+      <td align="center"><span id="blacksmithAllocated">0</span></td>
+      <td align="right"><button onClick="assignWorker(1)">+</button></td>
+      <td align="right"><button onClick="assignWorker(-1)">-</button></td>
+      <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+    </tr>
+    <tr>
+      <td>Carpenters</td>
+      <td align="center"><span id="shield">0</span></td>
+      <td align="center"><span id=""></span></td>
+      <td align="center"><span id=""></span></td>
+      <td align="center"><span id="carpentersAllocated">0</span></td>
+      <td align="right"><button onClick="assignWorker(1)">+</button></td>
+      <td align="right"><button onClick="assignWorker(-1)">-</button></td>
+      <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+    </tr>
+    <tr>
+      <td>Livery</td>
+      <td align="center"><span id="lance">0</span></td>
+      <td align="center"><span id=""></span></td>
+      <td align="center"><span id=""></span></td>
+      <td align="center"><span id="liveryAllocated">0</span></td>
+      <td align="right"><button onClick="assignWorker(1)">+</button></td>
+      <td align="right"><button onClick="assignWorker(-1)">-</button></td>
+      <!--<td align="right"><button onClick="dassignAllParshman(1)">Cap</button></td>-->
+    </tr>
 </table>
   <script src="main.js"></script>
 </body>
